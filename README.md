@@ -29,4 +29,6 @@ Redis.
 1) Frontend: Media responsiveness.
 2) Deep learning: Accepting new targets during online learning.
 
+#### Best viewed with a system.
+
 Link to current version of [vindler](https://vindler.netlify.app/#/Login).

@@ -1,0 +1,961 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Peddana&display=swap');
+
+
+
+html, body {
+  margin:0;
+  background-color:whitesmoke;/*whitesmoke*/
+  overflow-x: hidden;
+  
+}
+
+
+.smallScreenSearch{
+    display:none;
+
+}
+
+/*------------------------------------------------------------------------------------LANDING PAGE/ LOGIN Section-----------------------------------------------------------------*/
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  background-color:palegoldenrod;
+}
+
+.flex-container > div{
+  background-color:whitesmoke;
+  padding:20px;
+  margin:9px;
+  font-size:15px;
+  width: 100%;
+  height: 91vh; /*670px*/
+}
+
+
+.landing_name{
+	font-family: 'Pacifico', cursive;
+    font-size: 60px;
+    text-align:center;
+    color: #ffebcd;
+    position:relative;
+    bottom:-120px;
+}
+
+.brand_name{
+	font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+    text-align:center;
+    color: #ffebcd;
+    position:relative;
+    bottom:-90px;
+
+}
+
+.auth {
+
+	width: 300px;
+    padding: 15px;
+    margin:15px;
+    text-align:center;
+    color: #ffebcd;
+    font-family: 'Titillium Web', sans-serif;
+    background-color:darkmagenta;
+    position:relative;
+    left:130px;
+    top: 70px;
+    border-radius: 9px;
+
+
+}
+
+.sign-in{
+
+	text-decoration: underline;
+    text-align:center;
+    color: palegoldenrod;
+    font-size:35px;
+    font-family: 'Titillium Web', sans-serif;
+    
+}
+/*-----------------------------------------------------------------Register Page--------------------------------------------------------------------*/
+
+.register_input{
+    color:gray;
+    border-radius: 9px;
+    border-color: #ffebcd;
+    width: 300px;
+    height: 23px;
+    margin-top: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    position:relative;
+    left: 500px;
+
+
+}
+/*
+.recognition_div{
+    
+    width: 400px;
+    height: 350px;
+    border :#ffebcd;
+    border-style: solid;
+    background-color: pink;
+    border-radius: 15px;
+    margin-top: 60px;
+    margin-left:350px;
+
+
+} */
+
+.registerButton{
+
+    position:relative;
+    margin-top: 30px;
+    left:610px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:white;
+    color: gray;
+    font-family: 'Titillium Web', sans-serif;
+    border-color: purple;
+    border-style: solid;
+    border-radius: 15px;
+
+}
+
+.LinkToLogin{
+    color: gray;
+    position:relative;
+    margin-top: 60px;
+    font-family: 'Titillium Web', sans-serif;
+    left: 550px;
+}
+
+.registerFormDiv{
+
+    height: 91vh;
+    width: 50%;
+    position:fixed;
+   
+}
+.register{
+
+    position:relative;
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    left:550px;
+    margin-top:60px;
+    text-decoration:underline;
+    color:darkmagenta;
+}
+
+/* ------------------------------------------------------------------------------LOGIN---------------------------------------------------------------------------*/
+.login_input{
+    color:gray;
+    border-radius: 9px;
+    border-color: #ffebcd;
+    width: 300px;
+    height: 23px;
+    margin-top: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    position:relative;
+    left: 500px;
+}
+
+.loginButton{
+
+    position:relative;
+    margin-top: 30px;
+    left:610px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:white;
+    color: gray;
+    font-family: 'Titillium Web', sans-serif;
+    border-color: purple;
+    border-style: solid;
+    border-radius: 15px;
+
+}
+
+.LinkToRegister{
+    color: gray;
+    position:relative;
+    margin-top: 60px;
+    font-family: 'Titillium Web', sans-serif;
+    left: 595px;
+}
+
+.loginFormDiv{
+
+    height: 91vh;
+    width: 50%;
+    position:fixed;
+   
+}
+.login{
+
+    position:relative;
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    left:630px;
+    margin-top:60px;
+    text-decoration:underline;
+    color:darkmagenta;
+}
+
+/*------------------------------------------------------------------------------------ (HEADER) NAV BAR Section -----------------------------------------------------------------*/
+
+
+
+#ul_1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:darkmagenta; 
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    position: -webkit-sticky;
+    position: sticky;
+    /*display: block;*/
+    top: 0;
+    margin-left: 0px; /*45px*/
+    width: 100%;
+    border-bottom: 3px solid palegoldenrod;
+    z-index: 8;
+ }
+
+li.l_h {
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+  
+}
+
+
+li.l_h a {
+    /*display: block;*/
+    color: #ffebcd;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    text-decoration: none;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    padding-right: 17px;
+    padding-left: 17px;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 17px;
+    margin-left: 17px;
+    
+}
+
+li.l_1 {
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  
+}
+
+
+li.l_1 a {
+    /*display: block;*/
+    color: #ffebcd;
+    text-align: center;
+    font-family: 'Courgette', cursive;
+    text-transform:uppercase;
+    text-decoration: none;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    padding-right: 17px;
+    padding-left: 17px;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 17px;
+    margin-left: 17px;
+    
+}
+
+
+li.l_1 a:hover{
+    background-color: purple;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    padding-right: 17px;
+    padding-left: 17px;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 17px;
+    margin-left: 17px;
+
+}
+
+
+.form_1{
+
+	float: left;
+    margin-right: 15px;
+    margin-left: 5px;
+    margin-top: 26px; 
+    /*30px*/
+    
+    
+}
+.header_input{
+    border-radius: 9px;
+    border-color: #ffebcd;
+    width: 250px;
+    height: 23px;
+    font-family: 'PT Serif', serif;
+
+}
+
+.header_button{
+    width: 100px;
+    height: 25px;
+    background: white;
+    border-radius: 15px;
+    color:purple;
+    margin-left: 6px;
+    font-family: 'PT Serif', serif;
+ 
+}
+
+.headerProfileImage{
+    float: right;
+    margin-right: 15px;
+    margin-left: 15px;
+   
+}
+
+
+.display-search{
+
+    background-color: rgba(0,0,0,0.4);
+    width: 235px;
+    position: fixed;
+    left: 535px;
+    top: 55px; /*-45*/ 
+    color: white;
+    padding:0.1px;
+    border-radius: 6px;
+    z-index:14;
+}
+
+.display-none-search{
+
+    background-color: rgba(0,0,0,0.4);
+    width: 235px;
+    position: relative;
+    left: 535px;
+    display: none;
+    color: white;
+    border-radius: 6px;
+}
+
+#ul_small{
+    display:none;
+}
+
+/*------------------------------------------------------------------------------------ HOME Section -----------------------------------------------------------------*/
+#profilepicture{
+    border-radius: 50%;
+    float: left;
+    
+}
+#pp {
+    border-radius: 50%;
+    height:80px;
+    width: 80px;
+}
+
+#pen_post {
+    background: mediumorchid;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: fixed; 
+    bottom: 80px;  
+    left: 1275px; 
+
+}
+
+
+#pen {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    bottom: 79px;
+    left: 1275px;
+    border: 3px solid mediumorchid;
+}
+
+.textStyle{
+    margin-left:89px;
+}
+
+#postContent{   
+    position: absolute;
+    z-index: 10;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.cpdmodal{
+    width: 100%; 
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto; 
+    position: fixed;
+    z-index: 1000;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 600ms ease-in;
+
+}
+.display-block {
+    display: block;
+}
+  
+.display-none {
+    display: none;
+}
+
+#postDiv {
+
+    color: black;
+    font-family: 'Peddana', serif;
+    font-size: 23px;
+    padding: 30px;
+    width: 75%;
+    margin: 30px;
+    background: white;
+    border:  palegoldenrod;
+    border-style: solid;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 3px#888888;
+    position: relative;
+    z-index:1;
+    word-wrap: break-word;
+    
+    
+}
+
+#createPost{
+    width: 70%;
+    height: 200px;
+    background-color:palegoldenrod;
+    border:white;
+    border-style: solid;
+    border-radius: 15px;
+    z-index: 99999;
+    position: fixed;
+    left:135px;
+    margin-top: 25vh;
+    
+}
+
+#createPost textarea {
+    background: palegoldenrod;
+    box-shadow: none;
+    outline: none;
+    size: 800px;
+    border-width: 0px;
+    border-bottom: 1px solid gray;
+    margin-left: 20px;
+    margin-top: 30px; /*60*/
+    width: 50vw;
+    word-break: break-all;
+    resize: none;
+    /*word-wrap: break-word;*/   
+}
+
+
+#postbtn{
+    background-color: white;
+    position:relative;
+    left: 10px;
+    width: 100px;
+    height: 30px;
+    border:white;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    /*margin-left: 500px;*/
+    margin-top: 60px;
+    
+}
+
+#postbtn:hover{
+    
+    color: palegoldenrod;
+    border:gray;
+    border-style: solid;
+    
+}
+
+.nameHighlight{
+
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.nameHighlight:hover{
+    text-decoration: underline;
+
+}
+
+
+
+
+.cancelPostBtn{
+    background-color: transparent;
+    color: gray;
+    border: none;
+    position:relative;
+    left: 870px;
+    top: 20px;
+    font-size: large;
+}
+
+
+
+#postdelete{
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:palegoldenrod;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    margin-left: 900px;
+    
+}
+
+#postdelete:hover{
+    background-color:red;
+    color: white;
+   
+}
+
+/* This fires as soon as the element enters the DOM */
+.cpd-transition-enter{
+    opacity:0.01;
+    color: transparent;
+    
+}
+
+/* This is where we can add the transition*/
+.cpd-transition-enter-active {
+    opacity:1;
+    transition: opacity 600ms ease-in;
+}
+
+
+
+/* This fires as soon as the this.state.showList is false */
+.cpd-transition-exit{
+
+    opacity:1;
+    
+    
+}
+/* fires as element leaves the DOM*/
+.cpd-transition-exit-active{
+
+  opacity: 0.01;
+  transition: opacity 600ms ease-in;
+  color: transparent;
+}
+
+
+/*--------------------------------------------------------------------- PROFILE PAGE ---------------------------------------------------------*/
+
+.ProfileBody{
+    position:absolute;
+}
+
+.logOutButton{
+
+    position:fixed;
+    top: 500px;
+    left:50px; /*1245px*/
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:purple;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    
+}
+
+.uploadButton{
+
+    position:fixed;
+    top: 450px;
+    left:35px; 
+    background-color: white;
+    width: 130px;
+    height: 30px;
+    border:purple;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+
+}
+
+
+.uploaddiv{
+
+    background-color: rgba(105, 12, 105, 0.4);
+    width: 250px;
+    padding: 30px;
+    position:fixed;
+    top: 300px;
+    left:5px; 
+    border-style: solid;
+    border-radius: 15px;
+    z-index: 35;
+
+}
+
+
+.none-uploaddiv{
+
+    background-color: rgba(105, 12, 105, 0.4);
+    width: 250px;
+    padding: 30px;
+    position:fixed;
+    top: 300px;
+    left:5px; 
+    display: none;
+    border-style: solid;
+    border-radius: 15px;
+
+}
+
+.cancelUploadBtn{
+
+    background-color: transparent;
+    color: black;
+    border: none;
+    position:relative;
+    left: 240px;
+    top: -20px;
+    font-size: large;
+}
+
+#imageupload{
+    position:relative;
+    left:-20px;
+    border-style: 0.5px solid;
+    border-radius: 1px;
+}
+
+#imagesend{
+    position:relative;
+    left:-20px;
+    margin-top: 15px;
+    border-style: solid;
+    border-radius: 15px;
+}
+
+.ppinprofilepage{
+    position: fixed;
+    left:50px;
+    top: 130px;  
+    
+}
+.userName{
+    position:fixed;
+    color: gray;  
+    left: 45px;
+    top: 190px;
+    font-size: 35px;
+}
+
+.verticleLine{
+    border-left: 1.5px solid darkmagenta;
+    height: 100vh;
+    position: fixed;
+    left: 195px;
+    top: 0;  
+}
+
+#userPostDiv{
+    color: black;
+    font-family: 'Peddana', serif;
+    font-size: 23px;
+    padding: 30px;
+    width: 900px;
+    margin: 30px;
+    background: white;
+    border:  palegoldenrod;
+    border-style: solid;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 3px#888888;
+    position:relative;
+    left: 190px;
+    z-index: 1;
+    word-wrap: break-word;
+}
+
+
+
+
+#userPostdelete{
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:palegoldenrod;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    position: relative;
+    left: 800px;
+    
+}
+
+#userPostdelete:hover{
+    background-color:red;
+    color: white;
+   
+}
+
+/*---------------------------------------------------------------------- LINK TO -----------------------------------------------------------*/
+
+.message{
+
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    bottom: 150px;
+    left: 1275px;
+    border: 3px solid mediumorchid;
+
+}
+
+.profile{
+
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    bottom: 220px;
+    left: 1275px;
+    border: 3px solid mediumorchid;
+
+}
+
+.home{
+
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    bottom: 220px;
+    left: 1275px;
+    border: 3px solid mediumorchid;
+
+}
+
+
+.display-visibility {
+    position:fixed;
+    bottom: 179px;
+    left: 1275px;
+    display:block;
+    opacity:1;
+    transition: opacity 600ms ease-in;
+}
+  
+.display-none-visibility {
+    position:fixed;
+    bottom: 179px;
+    left: 1275px;
+    display:none;
+    opacity:0;
+    transition: opacity 600ms ease-in;
+    
+}
+
+
+/*-----------------------------------------------------------Messages Section -----------------------------------------------------------------*/
+
+.SideBar{
+
+    height: 83vh;
+    position: fixed;
+    bottom: -25px; /* increase  value to understand*/
+    width: 350px;
+    border-right: 3px solid palegoldenrod;
+    border-bottom: 3px solid palegoldenrod;
+    background-color: darkmagenta;
+    
+
+}
+
+.SearchUser{
+    position: fixed;
+    padding-bottom: 6px;
+    border-bottom: 1px solid;
+    border-color: palegoldenrod;
+    border-right: 3px solid palegoldenrod;
+    background-color: darkmagenta;
+    width: 350px;
+}
+.userCell{
+    padding: 0.5px;
+    position:relative;
+    cursor: pointer;
+}
+.UserMessages{
+
+    overflow: auto;
+
+}
+
+.search_message_input{
+
+    width: 335px;
+    border-radius: 15px;
+    margin-left: 3px;
+    margin-top: 3px;
+    height: 20px;
+}
+
+.userList{
+
+    height: 90px;
+    width: 340px;
+    margin-top: 6px;
+    margin-left: 3.6px;
+    background-color: darkmagenta;
+    
+}
+
+.chatHeader{
+    position:fixed;
+    width: 1013px;
+    left: 353px;
+    background-color: darkmagenta;
+    height: 50px;
+    padding:12px; 
+
+}
+.chatDiv{
+
+    position:fixed;
+    width: 1013px;
+    left: 353px;
+    top:600px; /*609*/
+    background-color: darkmagenta;
+    height: 50px;
+    padding:12px; 
+
+
+}
+
+.chat_button{
+
+    margin-left:9px; 
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:purple;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    
+}
+
+.chat_input{
+
+    margin-left:9px; 
+    width:80%;
+    height: 25px;
+    border-radius: 15px;
+}
+
+.holdcontent{
+    position:fixed;
+    z-index:1;
+}
+
+.display-messagelist-search{
+
+    position:relative;
+    bottom: -30px;
+    left: 15px;
+    z-index:6;
+    padding:1.5px;
+    color:white;
+    width:320px;
+    display:block;
+    opacity:1;
+    background-color: rgba(0,0,0,0.7);
+    
+}
+
+.display-none-messagelist-search{
+
+    position:relative;
+    bottom: -30px;
+    left: 15px;
+    padding:1.5px;
+    color:white;
+    width:320px;
+    background-color: rgba(0,0,0,0.7);
+    display:none;
+    opacity:0;
+    
+}
+
+.horizontal{
+    display: none;
+}
+.smallScreenPortfolio{
+    display: none;
+}
+
+
+/*------------------------------------------------ Under Construction Message ----------------------------------------------------------------*/
+.Umessage{
+
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    margin-top: 200px;
+
+}
+.uVindle{
+    font-family: 'Pacifico', cursive;
+    font-size: 60px;
+
+}
+
+.display-m-visibility {
+    position:fixed;
+    bottom: 179px;
+    left: 1275px;
+    display:none;
+    opacity:1;
+    transition: opacity 600ms ease-in;
+}

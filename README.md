@@ -23,6 +23,7 @@ Redis.
 1) vindler_authentication: This folder contains the backend that houses the machine learning and deep learning model.
 2) vindler_backend: This folder contains the backend for post, get, delete, user registeration, user authentication, and picture upload requests(The images are saved on AWS s3 bucket). 
 3) Vindler_frontend: This folder contains the frontend interface for vindler.
+4) Check: Testing the models on single and multiple pictures.
 
 
 ## Issues:

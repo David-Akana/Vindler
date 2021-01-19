@@ -15,18 +15,18 @@ To use face or voice recognition and authentication as a verification method whe
 React-Redux.
 Django REST framework.
 ReactNative.
-Deep learing frameworks.
+Machine learning and Deep learning frameworks.
 Postgres.
 Redis.
 
 ## Repo Breakdown:
-vindler_authentication: This folder contains the backend that houses the deep learning model.
-vindler_backend: This folder contains the backend for post, get, delete, user registeration, user authentication, and picture upload requests. The  images are saved on AWS s3 bucket.
-Vindler_frontend: This folder contains the frontend interface for vindler.
+1) vindler_authentication: This folder contains the backend that houses the machine learning and deep learning model.
+2) vindler_backend: This folder contains the backend for post, get, delete, user registeration, user authentication, and picture upload requests(The images are saved on AWS s3 bucket). 
+3) Vindler_frontend: This folder contains the frontend interface for vindler.
 
 
 ## Issues:
-Frontend: Media responsiveness.
-Deep learning: Accepting new targets during online learning.
+1) Frontend: Media responsiveness.
+2) Deep learning: Accepting new targets during online learning.
 
 Link to current version of [vindler](https://vindler.netlify.app/#/Login)

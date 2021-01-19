@@ -1,6 +1,6 @@
 # Vindler
 
-### Note: THIS IS AN UNGOING PROJECT.
+### Note: THIS IS AN ONGOING PROJECT.
 
 ## Aim:
 To use face or voice recognition and authentication as a verification method when accessing an auth based platform, in this use case a basic social platform - vindler.

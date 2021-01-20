@@ -1,0 +1,830 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Peddana&display=swap');
+
+html, body {
+    margin:0;
+    background-color:whitesmoke;/*whitesmoke*/
+    overflow-x: hidden;
+    
+}
+
+/*------------------------------------------------------------------------------------LANDING PAGE/ LOGIN Section-----------------------------------------------------------------*/
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    background-color:palegoldenrod;
+  }
+  
+  .flex-container > div{
+    background-color:whitesmoke;
+    padding:20px;
+    margin:9px;
+    font-size:15px;
+    width: 100%;
+    height: 94.8vh; /*670px*/
+  }
+  
+  
+  .landing_name{
+      font-family: 'Pacifico', cursive;
+      font-size: 60px;
+      text-align:center;
+      color: #ffebcd;
+      position:relative;
+      bottom:-120px;
+  }
+  
+  .brand_name{
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 15px;
+      text-align:center;
+      color: #ffebcd;
+      position:relative;
+      bottom:-90px;
+  
+  }
+  
+  .auth {
+  
+      width: 300px;
+      padding: 15px;
+      margin:15px;
+      text-align:center;
+      color: #ffebcd;
+      font-family: 'Titillium Web', sans-serif;
+      background-color:darkmagenta;
+      position:relative;
+      left:5px;
+      top: 70px;
+      border-radius: 9px;
+  
+  
+  }
+  
+  .sign-in{
+  
+      text-decoration: underline;
+      text-align:center;
+      color: palegoldenrod;
+      font-size:35px;
+      font-family: 'Titillium Web', sans-serif;
+      
+  }
+
+/* ------------------------------------------------------------------------------LOGIN---------------------------------------------------------------------------*/
+.login_input{
+    color:gray;
+    border-radius: 9px;
+    border-color: #ffebcd;
+    width: 300px;
+    height: 23px;
+    margin-top: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    position:relative;
+    left: 200px;
+}
+
+.loginButton{
+
+    position:relative;
+    margin-top: 30px;
+    left:310px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:white;
+    color: gray;
+    font-family: 'Titillium Web', sans-serif;
+    border-color: purple;
+    border-style: solid;
+    border-radius: 15px;
+
+}
+
+.LinkToRegister{
+    color: gray;
+    position:relative;
+    margin-top: 160px;
+    font-family: 'Titillium Web', sans-serif;
+    left: 295px;
+}
+
+.loginFormDiv{
+
+    height:91vh;
+    width: 95%;
+    position: relative;
+    left: 1px;
+    top:1px;
+    margin: 0 auto;
+    /*border-color: green; /* for debugging reasons
+    border-style: solid;*/
+   
+}
+.login{
+
+    position:relative;
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    left:330px;
+    margin-top:60px;
+    text-decoration:underline;
+    color:darkmagenta;
+}
+
+/*-----------------------------------------------------------------Register Page--------------------------------------------------------------------*/
+
+.register_input{
+    color:gray;
+    border-radius: 9px;
+    border-color: #ffebcd;
+    width: 300px;
+    height: 23px;
+    margin-top: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    position:relative;
+    left:200px;
+
+
+}
+/*
+.recognition_div{
+    
+    width: 400px;
+    height: 350px;
+    border :#ffebcd;
+    border-style: solid;
+    background-color: pink;
+    border-radius: 15px;
+    margin-top: 60px;
+    margin-left:350px;
+
+
+} */
+
+.registerButton{
+
+    position:relative;
+    margin-top: 30px;
+    left:300px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:white;
+    color: gray;
+    font-family: 'Titillium Web', sans-serif;
+    border-color: purple;
+    border-style: solid;
+    border-radius: 15px;
+
+}
+
+.LinkToLogin{
+    color: gray;
+    position:relative;
+    margin-top: 190px;
+    font-family: 'Titillium Web', sans-serif;
+    left: 250px;
+}
+
+.registerFormDiv{
+
+    height: 91vh;
+    width: 95%;
+    position:fixed;
+    position: relative;
+    left: 1px;
+    margin: 0 auto;
+   
+   
+}
+.register{
+
+    position:relative;
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    left:240px;
+    margin-top:60px;
+    text-decoration:underline;
+    color:darkmagenta;
+}
+
+/* ------------------------------------------------------------------------------LOGIN---------------------------------------------------------------------------*/
+.login_input{
+    color:gray;
+    border-radius: 9px;
+    border-color: #ffebcd;
+    width: 300px;
+    height: 23px;
+    margin-top: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    position:relative;
+    left: 200px;
+}
+
+.loginButton{
+
+    position:relative;
+    margin-top: 30px;
+    left:310px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:white;
+    color: gray;
+    font-family: 'Titillium Web', sans-serif;
+    border-color: purple;
+    border-style: solid;
+    border-radius: 15px;
+
+}
+
+.LinkToRegister{
+    color: gray;
+    position:relative;
+    margin-top: 160px;
+    font-family: 'Titillium Web', sans-serif;
+    left: 300px;
+}
+ 
+.loginFormDiv{
+
+    height: 91vh;
+    width: 95%;
+    position: fixed;
+    left: 1px;
+    margin: 0 auto;
+   /* border-color: green;  for debugging reasons
+    border-style: solid;*/
+   
+}
+.login{
+
+    position:relative;
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    left:330px;
+    margin-top:60px;
+    text-decoration:underline;
+    color:darkmagenta;
+}
+
+/*------------------------------------------------------------------------------------ (HEADER) NAV BAR Section -----------------------------------------------------------------*/
+
+
+#ul_small{
+    display:none;
+}
+
+#ul_1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:darkmagenta; 
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    position: -webkit-sticky;
+    position: sticky;
+    /*display: block;*/
+    top: 0;
+    margin-left: 0px; /*45px*/
+    width: 100%;
+    border-bottom: 3px solid palegoldenrod;
+    z-index: 8;
+ }
+
+li.l_h {
+    float: left;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+  
+}
+
+
+li.l_h a {
+    /*display: block;*/
+    color: #ffebcd;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    text-decoration: none;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    padding-right: 7px;
+    padding-left: 7px;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 7px;
+    margin-left: 7px;
+    
+}
+
+li.l_1 {
+    float: left;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  
+}
+
+
+li.l_1 a {
+    /*display: block;*/
+    color: #ffebcd;
+    text-align: center;
+    font-family: 'Courgette', cursive;
+    text-transform:uppercase;
+    text-decoration: none;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    padding-right: 7px;
+    padding-left: 7px;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 7px;
+    margin-left: 7px;
+    
+}
+
+
+li.l_1 a:hover{
+    background-color: purple;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    padding-right: 17px;
+    padding-left: 17px;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 17px;
+    margin-left: 17px;
+
+}
+
+
+.form_1{
+
+	float: left;
+    margin-right: 15px;
+    margin-left: 5px;
+    margin-top: 26px; 
+    /*30px*/
+    
+    
+}
+.header_input{
+    border-radius: 9px;
+    border-color: #ffebcd;
+    width: 250px;
+    height: 23px;
+    font-family: 'PT Serif', serif;
+
+}
+
+.header_button{
+    width: 100px;
+    height: 25px;
+    background: white;
+    border-radius: 15px;
+    color:purple;
+    margin-left: 6px;
+    font-family: 'PT Serif', serif;
+ 
+}
+
+.headerProfileImage{
+    float: right;
+    margin-right: 15px;
+    margin-left: 15px;
+   
+}
+
+
+.display-search{
+
+    background-color: rgba(0,0,0,0.4);
+    width: 235px;
+    position: fixed;
+    left: 355px;
+    top: 55px; /*-45*/ 
+    color: white;
+    padding:0.1px;
+    border-radius: 6px;
+    z-index:14;
+
+
+}
+
+.display-none-search{
+
+    background-color: rgba(0,0,0,0.4);
+    width: 235px;
+    position: relative;
+    left: 535px;
+    display: none;
+    color: white;
+    border-radius: 6px;
+
+}
+
+
+/*------------------------------------------------------------------------------------ HOME Section -----------------------------------------------------------------*/
+#profilepicture{
+    border-radius: 50%;
+    float: left;
+    
+}
+#pp {
+    border-radius: 50%;
+    height:80px;
+    width: 80px;
+}
+
+#pen_post {
+    background: mediumorchid;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    position: fixed; 
+    bottom: 80px;  
+    left: 650px; 
+    z-index:3000;
+
+}
+
+
+#pen {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    bottom: 79px;
+    left: 650px;
+    border: 3px solid mediumorchid;
+}
+
+.textStyle{
+    margin-left:89px;
+}
+
+#postContent{   
+    position: absolute;
+    z-index: 10;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.cpdmodal{
+    width: 100%; 
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto; 
+    position: fixed;
+    z-index: 6000;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.5);
+    transition: opacity 600ms ease-in;
+
+}
+.display-block {
+    display: block;
+}
+  
+.display-none {
+    display: none;
+}
+
+#postDiv {
+
+    color: black;
+    font-family: 'Peddana', serif;
+    font-size: 23px;
+    padding: 30px;
+    width: 85%;
+    margin: 30px;
+    background: white;
+    border:  palegoldenrod;
+    border-style: solid;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 3px#888888;
+    position: relative;
+    z-index:1;
+    
+    
+}
+
+#createPost{
+    width: 70%;
+    height: 200px;
+    background-color:palegoldenrod;
+    border:white;
+    border-style: solid;
+    border-radius: 15px;
+    z-index: 99999;
+    position: fixed;
+    left:120px;
+    margin-top: 25vh;
+    
+}
+
+#createPost textarea {
+    background: palegoldenrod;
+    box-shadow: none;
+    outline: none;
+    border-width: 0px;
+    border-bottom: 1px solid gray;
+    margin-left: 20px;
+    margin-top: 40px;
+    width: 35vw;
+    resize: none;
+    
+}
+
+.nameHighlight{
+
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.nameHighlight:hover{
+
+    text-decoration: underline;
+
+
+}
+
+#postbtn{
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:white;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    margin-top: 20px;
+    position:relative;
+    left: 10px;
+    
+}
+
+#postbtn:hover{
+    
+    color: palegoldenrod;
+    border:gray;
+    border-style: solid;
+    
+}
+.cancelPostBtn{
+    background-color: transparent;
+    color: gray;
+    border: none;
+    position:relative;
+    left: 450px;
+    top: 20px;
+    font-size: large;
+}
+
+
+
+#postdelete{
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:palegoldenrod;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    margin-left: 550px;
+    
+}
+
+#postdelete:hover{
+    background-color:red;
+    color: white;
+   
+}
+
+/* This fires as soon as the element enters the DOM */
+.cpd-transition-enter{
+    opacity:0.01;
+    color: transparent;
+    
+}
+
+/* This is where we can add the transition*/
+.cpd-transition-enter-active {
+    opacity:1;
+    transition: opacity 600ms ease-in;
+}
+
+
+
+/* This fires as soon as the this.state.showList is false */
+.cpd-transition-exit{
+
+    opacity:1;
+    
+    
+}
+/* fires as element leaves the DOM*/
+.cpd-transition-exit-active{
+  opacity: 0.01;
+  transition: opacity 600ms ease-in;
+  color: transparent;
+}
+
+
+/*----------------------------------------------------------------------- LINK TO -----------------------------------------------------------*/
+
+.message{
+
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    bottom: 150px;
+    left: 650px;
+    border: 3px solid mediumorchid;
+    z-index: 3000;
+
+}
+
+.profile{
+
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    bottom: 220px;
+    left: 650px;
+    border: 3px solid mediumorchid;
+    z-index: 3000;
+
+}
+
+
+.home{
+
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position:fixed;
+    bottom: 220px;
+    left: 650px;
+    border: 3px solid mediumorchid;
+    z-index: 3000;
+
+}
+
+
+.display-visibility {
+    position:fixed;
+    bottom: 179px;
+    left: 650px;
+    display:block;
+    opacity:1;
+    transition: opacity 600ms ease-in;
+    z-index: 3000;
+}
+  
+.display-none-visibility {
+    position:fixed;
+    bottom: 179px;
+    left: 650px;
+    display:none;
+    opacity:0;
+    transition: opacity 600ms ease-in;
+    z-index: 3000;
+}
+
+
+/*--------------------------------------------------------------------- PROFILE PAGE ---------------------------------------------------------*/
+.ProfileBody{
+    position: absolute;
+    z-index: 10;
+    /*overflow: scroll;*/
+}
+
+.logOutButton{
+
+    position:fixed;
+    top: 500px;
+    left:30px; /*1245px*/
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:purple;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    
+}
+
+.ppinprofilepage{
+    position: fixed;
+    left:30px;
+    top: 130px;  
+    
+}
+.userName{
+    position:fixed;
+    color: gray;  
+    left: 20px;
+    top: 190px;
+    font-size: 35px;
+}
+
+.uploadButton{
+
+    position:fixed;
+    top: 450px;
+    left:15px; 
+    background-color: white;
+    width: 130px;
+    height: 30px;
+    border:purple;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+
+}
+
+.verticleLine{
+    border-left: 1.5px solid darkmagenta;
+    height: 100vh;
+    position: fixed;
+    left: 160px;
+    top: 0;  
+}
+
+#userPostDiv{
+    color: black;
+    font-family: 'Peddana', serif;
+    font-size: 23px;
+    padding: 30px;
+    width: 500px;
+    margin: 30px;
+    background: white;
+    border:  palegoldenrod;
+    border-style: solid;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 3px#888888;
+    position:relative;
+    left: 150px;
+    z-index: 1;
+}
+
+
+#userPostdelete{
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border:palegoldenrod;
+    color: gray;
+    border-style: solid;
+    border-radius: 15px;
+    position: relative;
+    left: 400px;
+    
+}
+
+#userPostdelete:hover{
+    background-color:red;
+    color: white;
+   
+}
+
+.horizontal{
+    display: none;
+}
+
+
+.smallScreenPortfolio{
+    display: none;
+}
+
+.smallScreen-pp{
+
+    display: none;
+
+}
+
+.smallScreen-un{
+    display: none;
+}
+
+
+.smallScreen-lob{
+
+    display: none;
+
+}

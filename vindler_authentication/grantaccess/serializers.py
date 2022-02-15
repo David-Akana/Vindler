@@ -1,31 +1,40 @@
 from rest_framework import serializers
-from .models import Faceauth, Predictions
+from .models import VindlerFaceauthMapper, VindlerFaceauth, VindlerPredictions
 
 
-class FaceauthSerializer(serializers.ModelSerializer):
+
+class VindlerFaceauthMapperSerializer(serializers.ModelSerializer):
 
 	targets = serializers.CharField(max_length=None)  #TextField is not available for serializers
+                                  
+	class Meta:
+		model = VindlerFaceauthMapper
+		fields = ['id','targets']
+
+
+
+class VindlerFaceauthSerializer(serializers.ModelSerializer):
+
+	#key = serializers.PrimaryKeyRelatedField(read_only=True)
 	train_images = serializers.ImageField(max_length=None)
-	
                                   
 
 	class Meta:
-		model = Faceauth
-		fields = ['targets', 'train_images']
+		model = VindlerFaceauth
+		fields = ['key', 'train_images']
 
 # https://www.django-rest-framework.org/api-guide/fields/#charfield
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-class ImageSerializer(serializers.ModelSerializer):
+class VindlerPredictionSerializer(serializers.ModelSerializer):
 
 	images = serializers.ImageField(max_length=None)
 	                          
 	class Meta:
-		model = Predictions
+		model = VindlerPredictions
 		fields = ['images']
-
 
 
 

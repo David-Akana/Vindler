@@ -3,7 +3,7 @@ from django.conf import settings
 
 # -------------------------------------------------------------for FaceNet ------------------------------------------------------------------------------
 import os
-import mtcnn
+#import mtcnn
 import joblib, pickle
 import pandas as pd
 import numpy as np
@@ -16,18 +16,18 @@ from PIL import Image
 
 from mtcnn.mtcnn import MTCNN
 from os import listdir
-from os.path import isdir
 #from matplotlib import pyplot
 from numpy import expand_dims
+import cv2
 
-from keras.models import load_model
-from keras_facenet import FaceNet
-from keras.models import model_from_json
+#from keras.models import load_model
+#from keras_facenet import FaceNet
+#from keras.models import model_from_json
 
-from sklearn.preprocessing import Normalizer
-from sklearn.svm import SVC
-from sklearn.linear_model import SGDClassifier
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+#from sklearn.preprocessing import Normalizer
+#from sklearn.svm import SVC
+#from sklearn.linear_model import SGDClassifier
+#from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -36,9 +36,89 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 class GrantaccessConfig(AppConfig):
     name = 'grantaccess'
 
+    class LBPHAuthentication:
+
+        def __init__(self):
+            pass
+
+
+        @staticmethod
+        def create_dataset(directory=None, target=None):
+            image = directory[12:]
+
+            dirc = settings.MEDIA_ROOT+ '/'+ 'train_images'
+                
+            path = dirc + image
+            training_image = cv2.imread(path)
+
+            # load faces
+            face, bounding_box = GrantaccessConfig.LBPHAuthentication.face_detection(training_image)
+            return face, target
+
+
+
+        @staticmethod
+        def face_detection(image):
+
+            model_path = os.path.join(settings.VINDLER_MODELS, "haarcascade_frontalface_default.xml")
+            image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+            haar_classifier = cv2.CascadeClassifier(model_path)
+            face = haar_classifier.detectMultiScale(image_gray, scaleFactor=1.3, minNeighbors=7)
+            if len(face) == 0:
+                return image_gray, []
+            (x,y,w,h) = face[0]
+            return image_gray[y:y+w, x:x+h], face[0]
+
+
+
+        # CV2 LBPH Face Detection Model
+        @staticmethod
+        def Face_Auth():
+
+            FaceAuthenticator =  None
+            current_model_path = os.path.join(settings.VINDLER_MODELS, 'FaceModel.yml')
+            if not os.path.exists(current_model_path):
+                print('using new model ... ')
+                FaceAuthenticator = cv2.face.LBPHFaceRecognizer_create()
+            else:
+                print('using updated model ... ')
+                FaceAuthenticator = cv2.face.LBPHFaceRecognizer_create()
+                FaceAuthenticator.read(current_model_path)
+
+            return FaceAuthenticator
+
+
+
+        # single face predictions
+        @staticmethod
+        def single_face_prediction(image_directory=None):
+            
+            dirc = settings.MEDIA_ROOT+ '/'+ 'for_predictions'
+
+            image = image_directory[22:]
+
+            path = dirc + image
+
+            login_image = cv2.imread(path)
+
+            face_authenticator = GrantaccessConfig.LBPHAuthentication.Face_Auth()
+
+            face, bounding_box = GrantaccessConfig.LBPHAuthentication.face_detection(login_image)
+
+            label, _ = face_authenticator.predict(face)
+
+
+            print(label)
+            print(_)
+        
+            return label
+
+
+
 # --------------------------------------------------------------------------FACE-NET-----------------------------------------------------------------------------------
 
-    
+    '''
     class facenet_authentication:
 
         def __init__(self):#self,directory,name_file,filename,face_pixels):
@@ -220,6 +300,7 @@ class GrantaccessConfig(AppConfig):
 
 
     facenet_auth = facenet_authentication
+'''
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -228,3 +309,4 @@ class GrantaccessConfig(AppConfig):
 # https://stackoverflow.com/questions/43048222/how-to-access-a-class-methods-within-static-class-methods
 # https://www.kaggle.com/lianglirong/sklearn-joblib-serialization-and-unserialization
 # https://stackoverflow.com/questions/24791987/why-do-i-get-pickle-eoferror-ran-out-of-input-reading-an-empty-file
+# https://stackoverflow.com/questions/46288224/opencv-attributeerror-module-cv2-has-no-attribute-face

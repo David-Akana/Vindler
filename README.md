@@ -42,9 +42,6 @@ virtual enviroment installed on your system you can install it using -> pip inst
 - When this is done, activate the application -> python manage.py runserver
 - Go to your web browser(I use Google chrome), create a new incognito page and type in http://127.0.0.1:8000
 
-## Issues:
-1) Frontend: Media responsiveness.
-2) Deep learning: Accepting new targets during online learning.
 
 #### Best viewed with a system.
 

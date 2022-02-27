@@ -26,6 +26,22 @@ Redis.
 4) Check: Testing the models on single and multiple pictures.
 
 
+# How to view this project on your desktop.
+Make sure you have pip installed on your system. If you have python 3.6 upwards, you would most likely have pip pre-installed. Have a virtual enviroment, if you do not have
+virtual enviroment installed on your system you can install it using -> pip install virtualenv on your CLI. Once that is installed, proceed with the following steps:
+
+- Clone the repo
+- Create a different folder for any of the backend services.
+- Copy the desired backend service to newly created folder.
+- On your CLI, cd to the folder.
+- Create your own virtualenv -> virtualenv name_of_your_env
+- Activate your env(windows) -> name_of_your_env\Scripts\activate 
+   ''         ''   ''(ios)   -> source name_of_your_env/bin/activate
+- Change directory to the applications root directory-> cd vindler_authentication
+- Install the requirements-> pip install -r requirements.txt
+- When this is done, activate the application -> python manage.py runserver
+- Go to your web browser(I use Google chrome), create a new incognito page and type in http://127.0.0.1:8000
+
 ## Issues:
 1) Frontend: Media responsiveness.
 2) Deep learning: Accepting new targets during online learning.

@@ -22,6 +22,8 @@ from django.http import JsonResponse
 from django.http import HttpResponse
 from django.conf import settings
 
+from . password_generator import generate_user_password
+
 
 # -----------------------------------------------------------------------------------------------------
 # Create your views here.
@@ -41,7 +43,8 @@ class VindlerFaceAuthentication(generics.ListCreateAPIView):
 
         x, y, face_array = list(), list(), list()
         temp = {}
-        target = request.data['targets']
+        target = generate_user_password()
+        print('target', target)
         temp['targets'] = target
         train_images = images = dict((request.data).lists())['train_images']
 
@@ -121,8 +124,10 @@ class VindlerFacePredict(generics.ListCreateAPIView):
 
 
             login_id = GrantaccessConfig.LBPHAuthentication.single_face_prediction(image_Serializer['images'].value)
+            #print(1)
 
             login_passcode = VindlerFaceauthMapper.objects.get(id=login_id)
+            #print(2)
 
             predicted = {'predicted_password':login_passcode.targets}
 

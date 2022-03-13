@@ -4,344 +4,153 @@ from rest_framework.parsers import FileUploadParser,  MultiPartParser, FormParse
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics
-from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework import permissions 
-from knox.models import AuthToken
 #from django.shortcuts import render
 
 
-#-----------------------------------------------------------------------------------------------------
-from django.shortcuts import render
-from .models import Vindles,  VindlesProfilePicture
-from django.contrib.auth.models import User
-from .serializers import  UserSerializer, RegisterUserSerializer, LoginUserSerializer, VindleSerializers, ProfilePictureSerializer
-from .permissions import IsOwnerOrReadOnly
-from collections import OrderedDict
-import json
-
+# --------------------------------------------------------------------------------------------------------------------------------------------------------
+import os
+import numpy as np
+import joblib, pickle
+from . apps import GrantaccessConfig
+from . models import VindlerFaceauthMapper, VindlerFaceauth, VindlerPredictions
+from . multiple import for_multiple_files
+from . serializers import VindlerFaceauthMapperSerializer, VindlerFaceauthSerializer, VindlerPredictionSerializer
+from django.db.models import Count
+from django.http import JsonResponse
+from django.http import HttpResponse
 from django.conf import settings
 
+from . password_generator import generate_user_password
+
+
+# -----------------------------------------------------------------------------------------------------
 # Create your views here.
 
-
-# Post and Get requests
-
-class vindler_requests(generics.ListCreateAPIView):
-	permission_classes = [permissions.IsAuthenticated]
-	serializer_class = VindleSerializers
-	queryset = Vindles.objects.all()
-
-	def post(self, request, format=None):
-
-		
-		
-		serializer = VindleSerializers(data=request.data)
-		if serializer.is_valid():
-			serializer.save()
-
-			user_name = User.objects.filter(username=serializer.data['name']).first()
-			image = user_name.vindlesprofilepicture.image.url
-			#data = settings.PHOTO_URL + str(image) 
-
-			return Response({'id': serializer.data['id'],
-				'name': serializer.data['name'],
-				'post': serializer.data['post'],
-				'time_posted': serializer.data['time_posted'], 
-				'owner': serializer.data['owner'],
-				'image': image}
-				, status=status.HTTP_201_CREATED)
-
-		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-	def get(self, request, format=None):
-
-		vindles =  Vindles.objects.all().order_by("-time_posted")#
-		serializer  = VindleSerializers(vindles,  context={'request': request}, many=True)
-
-		#user_name = User.objects.filter(username=serializer.data[0]['name']).first()
-		#image = user_name.vindlesprofilepicture.image.url
-		#data = "http://127.0.0.1:8000" + str(image)
-
-		final_list = []
-		inner_list = []
-
-		for i in range(len(serializer.data)):
-			id_ = serializer.data[i]['id']
-			inner_list.append(('id',id_))
-			name = serializer.data[i]['name']
-			inner_list.append(('name',name))
-			post = serializer.data[i]['post']
-			inner_list.append(('post',post))
-			time_posted = serializer.data[i]['time_posted']
-			inner_list.append(('time_posted',time_posted))
-			owner = serializer.data[i]['owner']
-			inner_list.append(('owner',owner))
-
-			user_name = User.objects.filter(username=name).first()
-			image = user_name.vindlesprofilepicture.image.url
-			#data = settings.PHOTO_URL + str(image)
-			inner_list.append(('image',image))
-			ordered = OrderedDict(inner_list)
-			final_list.append(ordered)
-		   
-
-		return Response(final_list)
+# using class based views
 
 
-
-# Get user vindle request
-class user_vindle_requests(generics.ListCreateAPIView):
-	permission_classes = [permissions.IsAuthenticated]
-	serializer_class = VindleSerializers
-	
-	def get(self, request, username, format=None):
-
-		#name=request.user
-
-		vindles =  Vindles.objects.filter(name=username).order_by("time_posted")
-		serializer  = VindleSerializers(vindles,  context={'request': request}, many=True)
-		return Response(serializer.data)
-		
-
-
-
-
-
-# Delete requests
-
-class vindler_delete(generics.GenericAPIView):
-
-	permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
-
-	def delete(self, request, pk, format=None):
-
-		try:
-			vindle = Vindles.objects.get(pk=pk)
-
-		except  Vindles.DoesNotExist:
-			return Response({'message': 'This Vindle does not exist'}, status=status.HTTP_404_NOT_FOUND)
-
-		if request.method =='DELETE':
-			vindle.delete()
-			return Response({'message': 'Delete Successful!'}, status=status.HTTP_204_NO_CONTENT)
-
-
-
-# Registeration requests
-class UserRegisteration(generics.GenericAPIView):
-
-	def post(self, request, format=None):
-		serializer = RegisterUserSerializer(data=request.data)
-		if serializer.is_valid():
-			user = serializer.save()
-
-
-
-			
-
-			return Response({
-				"user": UserSerializer(user,context=serializer).data,
-				"token": AuthToken.objects.create(user)[1]})
-
-		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-		
-
-# Login requests
-class UserLogin(generics.GenericAPIView):
-
-	def post(self, request, format=None):
-		serializer = LoginUserSerializer(data=request.data)
-		if serializer.is_valid():
-			user = serializer.validated_data
-
-    	    
-			return Response({
-				"user": UserSerializer(user,context=serializer).data,
-				"token": AuthToken.objects.create(user)[1]})
-
-		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-		
-
-	
-# GET User Api
-class UserAPI(generics.RetrieveAPIView):
-	permission_classes = [permissions.IsAuthenticated]
-	serializer_class = UserSerializer
-
-	def get_object(self):
-		return self.request.user
-
-
-# GET User Api
-class SearchUserAPI(generics.RetrieveAPIView):
-	permission_classes = [permissions.IsAuthenticated]
-	serializer_class = UserSerializer
-
-	def get(self, request, username, format=None):
-	
-		user =  User.objects.filter(username=username)
-
-		if not user.exists():
-			return Response({"detail": "User not found"}, status=status.HTTP_404_NOT_FOUND)
-
-		serializer  = UserSerializer(user, context={'request': request}, many=True)
-		return Response(serializer.data)
-
-
-# For post request
-
-class ProfilePicture(generics.ListCreateAPIView):
+# This api collects multiple images
+class VindlerFaceAuthentication(generics.ListCreateAPIView):
     parser_classes = [MultiPartParser, FormParser] 
-    serializer_class = ProfilePictureSerializer
-    queryset = VindlesProfilePicture.objects.all()
+    serializer_class = [VindlerFaceauthMapperSerializer, VindlerFaceauthSerializer]
+    queryset = [VindlerFaceauth.objects.all(), VindlerFaceauthMapper.objects.all()]
     
-    def post(self, request, format=None): #*args, **kwargs):
+    #permission_classes = [permissions.AllowAny,]
 
-        #data = {"user":json.loads(request.data['user']),"image":request.data['image']}
-        
+    def post(self, request, format=None):#*args, **kwargs):
 
-        get_id = request.data.get('user')
-        try:
-        	instance = VindlesProfilePicture.objects.get(user=get_id)
-        except VindlesProfilePicture.DoesNotExist:
-        	instance =None
-
-        PP_Serializer = ProfilePictureSerializer(instance, data=request.data)#, instance=request.user)
-        if PP_Serializer.is_valid(raise_exception=ValueError):
-        	PP_Serializer.save()
-        	return Response(PP_Serializer.data, status=status.HTTP_201_CREATED)
-            
-           
-        return Response(PP_Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    
+        x, y, face_array = list(), list(), list()
+        temp = {}
+        target = generate_user_password()
+        print('target', target)
+        temp['targets'] = target
+        train_images = images = dict((request.data).lists())['train_images']
 
 
-class GetProfilePicture(generics.ListCreateAPIView):
-    parser_classes = [MultiPartParser, FormParser] 
-    serializer_class = ProfilePictureSerializer
+        # map the target to the unique interger Id.
+        mapper_Serializer = VindlerFaceauthMapperSerializer(data=temp)
+        if mapper_Serializer.is_valid():
+            mapper_Serializer.save()
+            print('Created unique ids for targets')
 
-    #permission_classes = [permissions.IsAuthenticated]
-    #queryset = VindlesProfilePicture.objects.all()
+
+        key = VindlerFaceauthMapper.objects.get(targets=target)
+        uniq_id = key.id
    
 
-    def get(self, request, name, format=None):
+        for image in train_images:
 
-    	#pp_vindle = VindlesProfilePicture.objects.filter(owner=5).order_by('-id')[0]
-    	#cserializer  = ProfilePictureSerializer(pp_vindle, context={'request': request}) #, many=True
+            modified_data = for_multiple_files(uniq_id, image)                   
+            faceauth_Serializer = VindlerFaceauthSerializer(data=modified_data)#request.data
 
-    	#print(cserializer.data)
+            if faceauth_Serializer.is_valid():
+               
+                faceauth_Serializer.save()
 
-    	user = User.objects.filter(username=name).first()
-    	image = user.vindlesprofilepicture.image.url
-    	
-    	#data = "http://127.0.0.1:8000" + str(image)
-    	 
-    	#serializer  = ProfilePictureSerializer(image, context={'request': request}, many=True)
-    	return Response({"image": image})
+                face_array.append(faceauth_Serializer.data)
 
+                print('Recieved Image ...')
 
+                if len(face_array) != 10 :
+                    pass
 
+                else:
+                    print('Preprocessing ...')
+                    for hold in VindlerFaceauth.objects.select_related().filter(key=faceauth_Serializer['key'].value):
 
+                        x1, y1 = GrantaccessConfig.LBPHAuthentication.create_dataset(str(hold.train_images), faceauth_Serializer['key'].value)
+                        x.append(x1)
+                        y.append(y1)
 
+                    # create dummy train data & class
+                    y.append(0)
+                    s = x[0].shape
+                    dummy = np.zeros(s)
+                    x.append(dummy)
 
+                    # learning
+                    print('Learning ...')                    
+                    FaceModel = GrantaccessConfig.LBPHAuthentication.Face_Auth()
+                    FaceModel.train(x, np.array(y))
 
+                    # updating the model
+                    print('Updating ...')
+                    update_model_path = os.path.join(settings.VINDLER_MODELS, 'FaceModel.yml')
+                    FaceModel.save(update_model_path)
+                    
+                    return Response(face_array, status=status.HTTP_201_CREATED)
 
+            else:
 
+                #print('I got here 6')
+                return Response(face_array, status=status.HTTP_400_BAD_REQUEST)
 
 
 
+#  This class API only collects one image.
 
+class VindlerFacePredict(generics.ListCreateAPIView):
+    parser_classes = [MultiPartParser, FormParser] 
+    serializer_class = [VindlerPredictionSerializer, VindlerFaceauthMapperSerializer]
+    queryset = [VindlerPredictions.objects.all(), VindlerFaceauthMapper.objects.all()]
+    
+    def post(self, request, format=None):
 
+        image_Serializer = VindlerPredictionSerializer(data=request.data)
+        if image_Serializer.is_valid():
+            image_Serializer.save()
 
 
+            login_id = GrantaccessConfig.LBPHAuthentication.single_face_prediction(image_Serializer['images'].value)
+            #print(1)
 
+            login_passcode = VindlerFaceauthMapper.objects.get(id=login_id)
+            #print(2)
 
+            predicted = {'predicted_password':login_passcode.targets}
 
+        return Response(predicted,  status=200)
 
+   
+         
 
 
 
-
-# Using function based  views for testing
-
-'''
-@api_view(['GET','POST'])
-def vindler_post(request):
-	if request.method == 'GET':
-
-		vindles =  Vindles.objects.all()
-
-		serializer = VindleSerializers(vindles,  context={'request': request}, many=True)
-
-		return Response(serializer.data)
-
-'''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# https://medium.com/@sostomc011/https-medium-com-sostomc011-getting-started-with-django-mysql-and-react-js-backend-b962a7691486
+# REFERENCES: https://www.techiediaries.com/django-rest-image-file-upload-tutorial/
 # https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c
-# https://www.valentinog.com/blog/drf/
-# https://blog.logrocket.com/creating-an-app-with-react-and-django/
-# https://medium.com/better-programming/build-a-hello-world-react-app-with-a-django-api-backend-8ba814d89115
-# https://stackoverflow.com/questions/40708201/serialize-a-django-model-with-a-foreignkey
-# https://stackoverflow.com/questions/20248292/int-argument-must-be-a-string-or-a-number-not-files/20249588#20249588
-# https://stackoverflow.com/questions/56298645/serializing-foreign-key-field
+# https://www.goodcode.io/articles/django-rest-framework-file-upload/
+# https://medium.com/backticks-tildes/lets-build-an-api-with-django-rest-framework-32fcf40231e5
+# *** https://djangotricks.blogspot.com/2020/03/how-to-upload-a-file-using-django-rest-framework.html
+# *** https://www.reddit.com/r/django/comments/4wfnsn/uploading_images_through_django_rest_framework/
+# https://stackoverflow.com/questions/38848759/valueerror-all-the-input-arrays-must-have-same-number-of-dimensions <-- # for columns
+# https://stackoverflow.com/questions/3881453/numpy-add-row-to-array  <-- # for rows
+# https://stackoverflow.com/questions/52903232/how-to-upload-multiple-images-using-django-rest-framework
+# https://stackoverflow.com/questions/40721512/assertionerror-at-posts-postlist-should-either-include-a-queryset-attribut
+# using functions instead of classes : https://bezkoder.com/django-rest-api/
+# https://pythonprogramming.net/foreign-keys-django-tutorial/
 
-
-
-# https://bezkoder.com/django-rest-api/
-# https://medium.com/django-rest/django-rest-framework-jwt-authentication-94bee36f2af8
-
-
-# DEPRECATED
-# https://medium.com/@dakota.lillie/django-react-jwt-authentication-5015ee00ef9a
-# https://medium.com/swlh/django-rest-framework-with-react-jwt-authentication-part-1-a24b24fa83cd
-# https://medium.com/techspace-usict/django-rest-framework-with-react-jwt-authentication-part-2-8e272e866150
+# integrating machine learning models
+# https://datagraphi.com/blog/post/2019/12/19/rest-api-guide-productionizing-a-machine-learning-model-by-creating-a-rest-api-with-python-django-and-django-rest-framework
+# https://towardsdatascience.com/productionize-a-machine-learning-model-with-a-django-api-c774cb47698c

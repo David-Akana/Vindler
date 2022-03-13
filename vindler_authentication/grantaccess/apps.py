@@ -66,6 +66,7 @@ class GrantaccessConfig(AppConfig):
             haar_classifier = cv2.CascadeClassifier(model_path)
             face = haar_classifier.detectMultiScale(image_gray, scaleFactor=1.3, minNeighbors=7)
             if len(face) == 0:
+                print('hiiii face not detected!!!!!!!!!!!!!!')
                 return image_gray, []
             (x,y,w,h) = face[0]
             return image_gray[y:y+w, x:x+h], face[0]
